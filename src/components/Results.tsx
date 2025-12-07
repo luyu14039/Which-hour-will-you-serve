@@ -16,15 +16,15 @@ interface ResultsProps {
 }
 
 const ASPECT_ICONS: Record<Aspect, string> = {
-  'Lantern': '/images/icons/lantern.png',
-  'Forge': '/images/icons/forge.png',
-  'Edge': '/images/icons/edge.png',
-  'Winter': '/images/icons/Winter.webp',
-  'Heart': '/images/icons/heart.png',
-  'Grail': '/images/icons/de.grail.png',
-  'Moth': '/images/icons/de.moth.png',
-  'Knock': '/images/icons/knock.png',
-  'Secret Histories': '/images/icons/Secrethistories.png'
+  'Lantern': import.meta.env.BASE_URL + 'images/icons/lantern.png',
+  'Forge': import.meta.env.BASE_URL + 'images/icons/forge.png',
+  'Edge': import.meta.env.BASE_URL + 'images/icons/edge.png',
+  'Winter': import.meta.env.BASE_URL + 'images/icons/Winter.webp',
+  'Heart': import.meta.env.BASE_URL + 'images/icons/heart.png',
+  'Grail': import.meta.env.BASE_URL + 'images/icons/de.grail.png',
+  'Moth': import.meta.env.BASE_URL + 'images/icons/de.moth.png',
+  'Knock': import.meta.env.BASE_URL + 'images/icons/knock.png',
+  'Secret Histories': import.meta.env.BASE_URL + 'images/icons/Secrethistories.png'
 };
 
 const HourCard: React.FC<{ hour: any }> = ({ hour }) => {
@@ -305,7 +305,7 @@ export const Results: React.FC<ResultsProps> = ({ scores, onRestart }) => {
       {/* Capture Area */}
       <div ref={resultsRef} className="bg-onyx p-4 md:p-8 rounded-lg relative overflow-hidden">
         {/* Background Texture for Image */}
-        <div className="absolute inset-0 pointer-events-none opacity-10 bg-[url('/images/noise.png')] mix-blend-overlay" />
+        <div className="absolute inset-0 pointer-events-none opacity-10 mix-blend-overlay" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E")` }} />
         
         <div className="text-center mb-8 md:mb-12 relative z-10">
             <motion.h1 

@@ -133,8 +133,8 @@ export const Quiz: React.FC<QuizProps> = ({ onComplete, onScoreUpdate }) => {
     })
   };
 
-  // Calculate progress based on history length. Assuming standard path is 25 questions.
-  const progress = Math.min(((history.length + 1) / 25) * 100, 100);
+  // Calculate progress based on history length.
+  const progress = Math.min(((history.length + 1) / questions.length) * 100, 100);
 
   return (
     <div className="w-full max-w-2xl mx-auto relative min-h-[600px] md:min-h-[700px] flex flex-col items-center justify-center px-4 py-6 md:py-0">
@@ -201,7 +201,7 @@ export const Quiz: React.FC<QuizProps> = ({ onComplete, onScoreUpdate }) => {
 
               <div className="text-center mb-6 md:mb-8">
                 <span className="text-gold/40 font-decorative tracking-[0.3em] text-[10px] md:text-xs uppercase block mb-2">
-                  Question {history.length + 1} of 25
+                  Question {history.length + 1} of {questions.length}
                 </span>
                 <h2 className="text-2xl md:text-4xl text-gold font-heading mb-3 md:mb-4 drop-shadow-md">
                   {currentQuestion.title}

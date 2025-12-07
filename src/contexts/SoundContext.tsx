@@ -37,11 +37,11 @@ export const SoundProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     // Initialize audio objects
     // Note: In a real scenario, ensure these files exist in public/sounds/
     const sounds: Record<SoundType, string> = {
-      hover: '/sounds/hover.mp3',
-      click: '/sounds/click.mp3',
-      flip: '/sounds/flip.mp3',
-      reveal: '/sounds/reveal.mp3',
-      ambient: '/sounds/ambient.mp3',
+      hover: import.meta.env.BASE_URL + 'sounds/hover.mp3',
+      click: import.meta.env.BASE_URL + 'sounds/click.mp3',
+      flip: import.meta.env.BASE_URL + 'sounds/flip.mp3',
+      reveal: import.meta.env.BASE_URL + 'sounds/reveal.mp3',
+      ambient: import.meta.env.BASE_URL + 'sounds/ambient.mp3',
     };
 
     Object.entries(sounds).forEach(([key, src]) => {

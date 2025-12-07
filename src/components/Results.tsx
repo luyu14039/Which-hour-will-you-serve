@@ -455,7 +455,7 @@ export const Results: React.FC<ResultsProps> = ({ scores, onRestart }) => {
         <div className="mt-16 pt-12 border-t border-gold/20 flex flex-col items-center gap-6 pb-8 relative z-10">
             <div className="bg-white p-3 rounded-sm shadow-[0_0_20px_rgba(192,160,98,0.2)]">
                 <QRCodeCanvas 
-                    value={window.location.origin}
+                    value={window.location.origin + import.meta.env.BASE_URL}
                     size={100} 
                     fgColor="#1A181C" 
                     bgColor="#FFFFFF" 
@@ -463,10 +463,10 @@ export const Results: React.FC<ResultsProps> = ({ scores, onRestart }) => {
             </div>
             <div className="text-center space-y-2">
                 <p className="text-gold font-heading tracking-[0.2em] text-sm uppercase">
-                    SCAN TO ASCEND
+                    SHARE THE PATH
                 </p>
                 <p className="text-gold/40 text-[10px] tracking-widest">
-                    探索更多禁忌知识
+                    指引同伴步入漫宿
                 </p>
             </div>
         </div>

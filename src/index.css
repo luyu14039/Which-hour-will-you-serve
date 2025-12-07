@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=ZCOOL+XiaoWei&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-void text-parchment font-body antialiased overflow-x-hidden;
+    background-image: radial-gradient(circle at center, #1A181C 0%, #0F0E11 100%);
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold text-gold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply relative px-8 py-3 bg-onyx border border-gold text-gold font-heading tracking-widest uppercase transition-all duration-300 hover:bg-gold/10 hover:shadow-glow-gold active:translate-y-0.5;
+    clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+  }
+
+  .card-frame {
+    @apply relative border border-gold/30 bg-onyx/80 backdrop-blur-sm shadow-card;
+  }
+  
+  .card-frame::before {
+    content: '';
+    @apply absolute inset-1 border border-gold/10 pointer-events-none;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 20s infinite linear;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  20% { opacity: 0.5; }
+  80% { opacity: 0.5; }
+  100% { transform: translate(100px, -100px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes tremble {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(0.5px, 0.5px); }
+  50% { transform: translate(-0.5px, -0.5px); }
+  75% { transform: translate(-0.5px, 0.5px); }
+  100% { transform: translate(0.5px, -0.5px); }
+}
+
+.animate-tremble {
+  animation: tremble 0.1s infinite;
+  display: inline-block;
+}
+
+.text-glow {
+  text-shadow: 0 0 10px currentColor;
+}
+
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+}

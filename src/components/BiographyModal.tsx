@@ -32,6 +32,7 @@ export const BiographyModal: React.FC<BiographyModalProps> = ({
   const [showStoryCopy, setShowStoryCopy] = useState(false);
   const [isMobileSettingsOpen, setIsMobileSettingsOpen] = useState(true);
   const [perspective, setPerspective] = useState<Perspective>('protagonist');
+  const [showQuotaWarning, setShowQuotaWarning] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to bottom during generation
@@ -51,6 +52,13 @@ export const BiographyModal: React.FC<BiographyModalProps> = ({
     if (!apiKey) {
       setError('请输入 DeepSeek API Key');
       return;
+    }
+
+    // Check quota warning
+    const count = parseInt(localStorage.getItem('biography_gen_count') || '0');
+    if (count >= 1 && !showQuotaWarning && apiKey === 'sk-cf51ba1983404d40b60fc3d6cf37135e') {
+        setShowQuotaWarning(true);
+        return;
     }
 
     setIsGenerating(true);
@@ -73,12 +81,20 @@ export const BiographyModal: React.FC<BiographyModalProps> = ({
       );
       // Collapse reasoning after generation is complete
       setIsReasoningCollapsed(true);
+      // Increment generation count
+      localStorage.setItem('biography_gen_count', (count + 1).toString());
     } catch (err: any) {
       setError(err.message || '生成失败，请检查 API Key 或网络连接');
       setIsMobileSettingsOpen(true); // Re-open settings on error
     } finally {
       setIsGenerating(false);
     }
+  };
+
+  const handleConfirmQuota = () => {
+      setShowQuotaWarning(false);
+      // Proceed with generation
+      handleGenerate();
   };
 
   const handleCopyPrompt = () => {
@@ -117,6 +133,39 @@ export const BiographyModal: React.FC<BiographyModalProps> = ({
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             className="relative w-full max-w-4xl h-[85vh] bg-onyx border border-gold/30 shadow-[0_0_50px_rgba(192,160,98,0.1)] flex flex-col overflow-hidden rounded-sm"
           >
+            {/* Quota Warning Overlay */}
+            {showQuotaWarning && (
+                <div className="absolute inset-0 z-[60] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm">
+                    <div className="bg-onyx border border-gold/40 p-6 max-w-md w-full shadow-[0_0_30px_rgba(192,160,98,0.3)] text-center">
+                        <AlertCircle className="w-12 h-12 text-gold mx-auto mb-4" />
+                        <h3 className="text-xl text-gold font-heading mb-2">额度提醒</h3>
+                        <p className="text-parchment/80 text-sm mb-6 leading-relaxed">
+                            这是一个完全由个人维护的公益项目，DeepSeek API 的额度非常有限。
+                            <br/><br/>
+                            如果您觉得有趣，推荐复制 Prompt 前往 <a href="https://chat.deepseek.com/" target="_blank" rel="noreferrer" className="text-gold underline hover:text-white">DeepSeek 官网</a> 自行创建，效果完全一致且免费。
+                        </p>
+                        <div className="flex flex-col gap-3">
+                            <button 
+                                onClick={() => {
+                                    handleCopyPrompt();
+                                    setShowQuotaWarning(false);
+                                    window.open('https://chat.deepseek.com/', '_blank');
+                                }}
+                                className="w-full py-2 border border-gold/40 text-gold hover:bg-gold/10 transition-colors font-heading tracking-wider uppercase text-sm"
+                            >
+                                复制 Prompt 并前往官网
+                            </button>
+                            <button 
+                                onClick={handleConfirmQuota}
+                                className="w-full py-2 bg-gold/10 text-gold/60 hover:text-gold hover:bg-gold/20 transition-colors font-heading tracking-wider uppercase text-xs"
+                            >
+                                我知道了，继续使用本站额度
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-gold/20 bg-void/50">
               <div className="flex items-center gap-3">

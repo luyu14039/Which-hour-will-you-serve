@@ -61,6 +61,36 @@ export const ASPECT_JUDGMENTS: Record<Aspect, Judgment> = {
     description: '你行走在多重历史的交汇点。你明白过去并非只有一种，真相往往由谎言编织而成。你博学、冷静，像一位图书管理员整理着世界的碎片。你并不急于干涉，而是倾向于观察与记录。你知道知识是有重量的，而你甘愿背负这种重量，为了让那些被遗忘的故事得以延续。',
     motto: '“历史是一张由谎言编织的挂毯，而我们手握针线。”',
     tarotCard: 'XXI - THE WORLD'
+  },
+  'Moon': {
+    title: '守夜人 (The Watchman)',
+    description: '你是黑夜的守望者，游走在清醒与疯狂的边缘。你聆听潮汐的低语，窥视月光下的阴影。对你而言，真相往往隐藏在谎言的背面，而最深刻的秘密总是伴随着危险。你并不畏惧黑暗，因为你明白，只有在黑暗中，某些事物才会显露真容。你守护着那些不应被揭示的知识，如同大海守护着深渊。',
+    motto: '“行于夜者，被遗忘者。”',
+    tarotCard: 'XVIII - THE MOON'
+  },
+  'Sky': {
+    title: '风暴之子 (Child of the Storm)',
+    description: '你的灵魂共鸣着高空的寒风与雷鸣。你理解宇宙运行的冰冷法则，那是一种超越凡俗情感的绝对和谐。无论是数学的优雅公式，还是风暴的毁灭力量，在你眼中都是同一种旋律的变奏。你追求的是一种崇高的秩序，一种不被尘世喧嚣所玷污的完美。你俯瞰众生，如苍穹般辽阔而无情。',
+    motto: '“平衡，和谐与必然性。”',
+    tarotCard: 'XVII - THE STAR'
+  },
+  'Rose': {
+    title: '引路人 (The Guide)',
+    description: '你掌握着通往新视界的秘密路径。你明白世界并非只有表面所见的那样，在现实的缝隙中，隐藏着无数通往漫宿的捷径。你既是迷途者的向导，也是未知的探索者。你的直觉如同罗盘般精准，指引你穿越迷雾与混乱。你寻找的不仅仅是方向，更是那隐藏在光芒背后的终极启迪。',
+    motto: '“探索？启迪？希望？”',
+    tarotCard: 'IX - THE HERMIT'
+  },
+  'Scale': {
+    title: '坚守者 (The Sentinel)',
+    description: '你拥有大地深处岩石般的坚韧与古老。你的意志不可动摇，如同亿万年前便已存在的山脉。你守护着那些不应被遗忘的传统与力量，抵御着时间的侵蚀。你的皮肤下流淌着原始的血液，你的沉默中蕴含着巨大的力量。你不需要言语，你的存在本身就是一种无法忽视的威压。',
+    motto: '“此为大地深处原始力量的残余。”',
+    tarotCard: 'XI - JUSTICE'
+  },
+  'Nectar': {
+    title: '滋养者 (The Nurturer)',
+    description: '你与世界的脉搏同频共振。你理解生命最原始的渴望——生长、繁衍、吞噬与重生。你的血液中流淌着森林的汁液，你的呼吸中带有泥土的芬芳。你既是慈悲的治愈者，也是残酷的自然法则的化身。你明白，所有的生命都源于血，也终将归于血。你在腐朽中培育新生，在死亡中看见绽放。',
+    motto: '“很久以前，一些人把该准则称作‘血’。”',
+    tarotCard: 'XIV - TEMPERANCE'
   }
 };
 
@@ -176,12 +206,6 @@ export const SPECIAL_COMBINATIONS: Record<string, Judgment> = {
     motto: '“过去从未死去，它只是被锁住了。”',
     tarotCard: 'XXI - THE WORLD'
   },
-  'Knock+Void': { // Placeholder for pure Knock or specific interactions
-     title: '伤口 (The Wound)',
-     description: '你本身就是一道裂痕。',
-     motto: '“我开。”',
-     tarotCard: 'XVI - THE TOWER'
-  },
 
   // Secret Histories Combinations
   'Secret Histories+Lantern': {
@@ -189,107 +213,57 @@ export const SPECIAL_COMBINATIONS: Record<string, Judgment> = {
     description: '你守护着知识，整理着光芒的碎片。你明白秩序的重要性，即使是在混乱的历史中。你用理智的光芒照亮过去的阴影。',
     motto: '“知识即是光。”',
     tarotCard: 'V - THE HIEROPHANT'
-  }
-};
+  },
 
-export const REALITY_JUDGMENTS: Record<Aspect, Judgment> = {
-  'Lantern': {
-    title: '清醒的智者 (The Lucid Sage)',
-    description: '在喧嚣的现代生活中，你是一座孤岛般的灯塔。你拒绝被情绪裹挟，拒绝盲从大众。你用逻辑的手术刀解剖每一个问题，追求绝对的理性与真相。对你而言，世界是一道复杂的谜题，而你致力于找到那个唯一的解。你的冷静常被误解为冷漠，但你知道，唯有清醒，才能自由。',
-    motto: '“在混沌的洪流中，理智是唯一的方舟。”',
-    tarotCard: 'IX - THE HERMIT'
-  },
-  'Forge': {
-    title: '不息的工匠 (The Restless Artisan)',
-    description: '你无法忍受停滞。你的生命力体现在“改变”上——改变环境、改变规则、改变自己。你是一个实干家，相信行动胜过一切空谈。无论是事业上的野心，还是生活中的创造，你总是那个推动齿轮转动的人。你燃烧着自己，也点燃了周围的世界。',
-    motto: '“世界不会自己变好，除非我们亲手去锻造它。”',
-    tarotCard: 'I - THE MAGICIAN'
-  },
-  'Edge': {
-    title: '无畏的先锋 (The Fearless Vanguard)',
-    description: '你将生活视为一场竞技场。挑战不会让你退缩，只会让你兴奋。你拥有敏锐的直觉和强大的执行力，善于在冲突中寻找机会。你并不一定好战，但你绝不畏战。在逆境中，你是那个最先站出来，也是最后倒下的人。你的锋芒是你最好的铠甲。',
-    motto: '“风暴来临时，我便是风暴。”',
-    tarotCard: 'VII - THE CHARIOT'
-  },
-  'Winter': {
-    title: '沉静的隐士 (The Quiet Hermit)',
-    description: '在这个过度喧哗的时代，你懂得沉默的力量。你并不厌世，只是更享受独处的宁静。你拥有一种超然的气质，能够接受失去、结束和不完美。你像冬日的雪一样，掩盖了世界的嘈杂，在内心深处构建了一个纯净、安宁的避难所。',
-    motto: '“万物终将归于寂静，而我在寂静中听见真理。”',
-    tarotCard: 'II - THE HIGH PRIESTESS'
-  },
-  'Heart': {
-    title: '坚韧的守护者 (The Resilient Guardian)',
-    description: '你是这个世界的基石。你拥有强大的包容力和生命力，能够消化痛苦，传递温暖。你重视连接，珍视关系，是家人和朋友最坚实的后盾。你的力量不在于进攻，而在于守护——守护那些微小的幸福，守护生活的常态，守护人性的光辉。',
-    motto: '“只要心跳还在，希望就在。”',
-    tarotCard: 'III - THE EMPRESS'
-  },
-  'Grail': {
-    title: '热烈的体验者 (The Passionate Experiencer)',
-    description: '你拒绝平庸。对你来说，活着就是为了体验——体验极致的快乐，体验深刻的痛苦，体验爱与被爱。你是感官的信徒，追求美、艺术和一切能让灵魂颤栗的事物。你像一杯浓烈的酒，让周围的人也随之沉醉。你活在当下，活得热烈而鲜活。',
-    motto: '“若不极致地燃烧，便如同从未活过。”',
-    tarotCard: 'XV - THE DEVIL'
-  },
-  'Moth': {
-    title: '自由的流浪者 (The Free Wanderer)',
-    description: '你是一阵抓不住的风。你拒绝被标签定义，拒绝被规则束缚。你的思维跳跃，充满了天马行空的想象力。你总是渴望远方，渴望变化，渴望成为不同的自己。在别人眼中你可能有些疯狂或不切实际，但你知道，那是你灵魂在飞翔。',
-    motto: '“不要问我去向何方，我的归宿在风中。”',
+  // Rose Combinations
+  'Rose+Secret Histories': {
+    title: '流亡者 (The Exile)',
+    description: '你已行过千山万水，足迹遍布那些被遗忘的古道与废弃的圣所。对你而言，历史并非书本上的文字，而是脚下延伸的尘土。你不再属于任何一座城池，因为整个世界既是你的流放地，也是你的朝圣路。你知晓通往漫宿的所有捷径，却唯独遗失了归乡的地图。',
+    motto: '“家园已逝，唯有前路。”',
     tarotCard: '0 - THE FOOL'
   },
-  'Knock': {
-    title: '敏锐的破局者 (The Keen Breaker)',
-    description: '你拥有一种独特的洞察力，总能看到别人忽视的“门”。你擅长寻找捷径，打破常规，解决那些看似无解的问题。你游走在规则的边缘，连接着不同的圈子和资源。对你来说，没有绝对的墙，只有还没找到的钥匙。',
-    motto: '“没有死局，只有未被发现的出口。”',
-    tarotCard: 'X - WHEEL OF FORTUNE'
+  'Rose+Knock': {
+    title: '渗透者 (The Infiltrator)',
+    description: '墙壁对你而言不过是等待被拆解的谜题，锁钥的咬合声是你最亲切的耳语。你像一阵穿堂风，轻易地滑过那些被严密看守的界限。无论是物质的樊笼还是心灵的迷宫，都无法困住你探寻的脚步。你不仅穿过了门，你成为了门本身。',
+    motto: '“界限是为别人设立的。”',
+    tarotCard: 'VII - THE CHARIOT'
   },
-  'Secret Histories': {
-    title: '深邃的记录者 (The Profound Chronicler)',
-    description: '你是一个怀旧的人，也是一个博学的人。你珍视记忆，无论是自己的还是集体的。你喜欢探究事物的来龙去脉，从历史中汲取智慧。在这个快节奏的遗忘时代，你是那个默默拾起碎片、拼凑真相的人。你的内心是一座图书馆，藏着无数的故事。',
-    motto: '“我们由记忆构成，遗忘即是死亡。”',
-    tarotCard: 'V - THE HIEROPHANT'
-  }
-};
 
-export const REALITY_COMBINATIONS: Record<string, Judgment> = {
-  'Lantern+Winter': {
-    title: '冷峻的观察者 (The Cold Observer)',
-    description: '理智与静默的结合。你像一台精密的仪器，冷静地观察着这个世界，不带偏见，也不带情感。你洞悉人性，却保持距离。',
-    motto: '“旁观者清。”',
+  // Sky Combinations
+  'Sky+Forge': {
+    title: '裂空者 (The Sky-Render)',
+    description: '当你的锤砧落下，连苍穹亦为之震颤。你引动高空的雷霆注入凡铁，将风暴的狂怒锻造成形。你的造物不仅仅是工具，它们是灾难的具象，是对此世脆弱法则的傲慢嘲弄。你不仅在锻造武器，你正在重铸天空的秩序。',
+    motto: '“风暴不是被驯服的，它是被锻造的。”',
+    tarotCard: 'XVI - THE TOWER'
+  },
+  'Sky+Lantern': {
+    title: '天穹之眼 (The Eye of the Firmament)',
+    description: '在凡人眼中闪烁的星辰，在你眼中却是宇宙精密的齿轮与代码。你洞悉了维系漫宿运转的冰冷逻辑，那是一种不含仁慈、绝对完美的几何学。你站在高处俯瞰众生，如同虚空凝视着尘埃，理解了光辉背后的残酷真理。',
+    motto: '“在光的尽头，是绝对的法则。”',
+    tarotCard: 'XVII - THE STAR'
+  },
+
+  // Moon Combinations
+  'Moon+Moth': {
+    title: '梦游者 (The Sleepwalker)',
+    description: '现实的边缘在你眼中早已模糊，如同月光下的潮汐般涨落不定。你在清醒时漫步于梦境的森林，在沉睡中低语着现世的秘密。你的灵魂是一只在虚幻与真实之间迷途的飞蛾，追逐着那些不存在于此世的苍白磷火，沉醉于疯狂而凄美的诗篇。',
+    motto: '“醒来才是噩梦的开始。”',
+    tarotCard: 'XVIII - THE MOON'
+  },
+
+  // Nectar Combinations
+  'Nectar+Heart': {
+    title: '丰饶之母/父 (The Bountiful)',
+    description: '你的血液中流淌着太古森林的脉动，每一次呼吸都带来春日的潮湿与生机。你是枯骨上绽放的野花，是荒原中涌出的甘泉。在你身边，伤口会以惊人的速度愈合，生命会以狂野的姿态疯长。你不仅滋养万物，你就是生命那无法被遏制的狂喜本身。',
+    motto: '“生命，生命，更多的生命。”',
+    tarotCard: 'III - THE EMPRESS'
+  },
+
+  // Scale Combinations
+  'Scale+Winter': {
+    title: '墓穴守卫 (The Crypt-Warden)',
+    description: '你如同一座沉默的山脉，屹立在生者与死者的边界。你的意志像冻土般坚硬，封存着那些不应见光的秘密与古老的诅咒。时间在你身上失去了意义，你成为了永恒的守望者，确保那些沉睡在黑暗中的事物，永远不会被惊扰。',
+    motto: '“在此止步。”',
     tarotCard: 'IV - THE EMPEROR'
-  },
-  'Lantern+Forge': {
-    title: '理性的变革者 (The Rational Reformer)',
-    description: '你拥有清晰的蓝图和强大的执行力。你不仅知道什么是对的，还有能力去实现它。你是推动社会进步的中坚力量。',
-    motto: '“知行合一。”',
-    tarotCard: 'VIII - STRENGTH'
-  },
-  'Forge+Edge': {
-    title: '野心的征服者 (The Ambitious Conqueror)',
-    description: '行动力与竞争心的完美融合。你在事业上势不可挡，为了目标可以排除万难。你是天生的领袖和赢家。',
-    motto: '“胜者为王。”',
-    tarotCard: 'IV - THE EMPEROR'
-  },
-  'Heart+Grail': {
-    title: '深情的伴侣 (The Devoted Lover)',
-    description: '你拥有丰富的情感和无尽的爱意。你懂得如何去爱，也渴望被爱。你是最温柔的情人，也是最忠诚的朋友。',
-    motto: '“爱是万物的答案。”',
-    tarotCard: 'VI - THE LOVERS'
-  },
-  'Moth+Knock': {
-    title: '灵动的投机者 (The Agile Speculator)',
-    description: '你思维敏捷，身手灵活。你总能在混乱中找到机会，在危机中全身而退。你是生活中的魔术师。',
-    motto: '“变幻莫测。”',
-    tarotCard: 'I - THE MAGICIAN'
-  },
-  'Secret Histories+Lantern': {
-    title: '博学的导师 (The Erudite Mentor)',
-    description: '你知识渊博，见解独到。你乐于分享你的智慧，指引他人走出迷茫。你是照亮他人前路的灯塔。',
-    motto: '“薪火相传。”',
-    tarotCard: 'IX - THE HERMIT'
-  },
-  'Winter+Edge': {
-    title: '冷酷的执行者 (The Ruthless Executor)',
-    description: '你话不多，但行事果决。在关键时刻，你能摒弃情感的干扰，做出最艰难的决定。你是最可靠的利刃。',
-    motto: '“沉默是金，行动是铁。”',
-    tarotCard: 'XI - JUSTICE'
   }
 };

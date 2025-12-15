@@ -127,7 +127,7 @@ export function buildPrompt(history: HistoryRecord[], finalResultTitle: string, 
 [节点 ${index + 1}]: ${item.questionTitle}
    - 抉择: "${item.optionText}"
    - 潜台词: ${item.flavorText}
-   - 性相: ${item.aspect}
+   - 性相变动: ${Object.entries(item.values).map(([k, v]) => `${k} ${v > 0 ? '+' : ''}${v}`).join(', ')}
 `).join('\n');
 
   if (perspective === 'observer') {

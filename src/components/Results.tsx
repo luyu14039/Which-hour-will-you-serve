@@ -28,19 +28,29 @@ const ASPECT_ICONS: Record<Aspect, string> = {
   'Grail': import.meta.env.BASE_URL + 'images/icons/de.grail.png',
   'Moth': import.meta.env.BASE_URL + 'images/icons/de.moth.png',
   'Knock': import.meta.env.BASE_URL + 'images/icons/knock.png',
-  'Secret Histories': import.meta.env.BASE_URL + 'images/icons/Secrethistories.png'
+  'Secret Histories': import.meta.env.BASE_URL + 'images/icons/Secrethistories.png',
+  'Moon': import.meta.env.BASE_URL + 'images/icons/moon.png',
+  'Sky': import.meta.env.BASE_URL + 'images/icons/sky.png',
+  'Rose': import.meta.env.BASE_URL + 'images/icons/rose.png',
+  'Scale': import.meta.env.BASE_URL + 'images/icons/scale.png',
+  'Nectar': import.meta.env.BASE_URL + 'images/icons/nectar.png'
 };
 
 const ASPECT_DESCRIPTIONS: Record<Aspect, { title: string; desc: string; motto: string }> = {
   'Lantern': { title: '灯 (Lantern)', desc: '理性、光辉、无慈悲。它代表着绝对的理性与揭示真相的力量。', motto: '“仁慈，”守夜人道，“仅能在影中觅得。”' },
   'Forge': { title: '铸 (Forge)', desc: '创造、改变、火、破坏。它通过破坏旧有的形态来创造新的形态。', motto: '“火是严冬，却是带有温度。火是暖春，却会耗尽一切。”' },
-  'Edge': { title: '刃 (Edge)', desc: '斗争、冲突、痛苦。它不仅仅是暴力，它是冲突的本质。', motto: '每一个小时都是一场战斗。' },
+  'Edge': { title: '刃 (Edge)', desc: '斗争、冲突、冲突。它不仅仅是暴力，它是冲突的本质。', motto: '每一个小时都是一场战斗。' },
   'Winter': { title: '冬 (Winter)', desc: '寂静、结局、死亡。它代表着死亡的宁静、色彩的消退和声音的止息。', motto: '寂静如约而至。' },
   'Heart': { title: '心 (Heart)', desc: '保护、生命、存续。它是保护者，也是永不停歇的舞者。', motto: '“为了保护我们所知世界的表皮，不息之心无尽地搏动着。”' },
   'Grail': { title: '杯 (Grail)', desc: '欲望、诱惑、出生。它代表着永不满足的饥饿感。', motto: '不仅是血，更是渴求。' },
   'Moth': { title: '蛾 (Moth)', desc: '混乱、自然、蜕皮。它是剪刀，剪断理性的束缚。', motto: '“in gi rum imus noc te et con sumi **喀嚓喀嚓喀嚓**”' },
   'Knock': { title: '启 (Knock)', desc: '开启、召唤、伤口。每一扇门都是一个伤口。', motto: '每一扇门都是一个伤口。' },
-  'Secret Histories': { title: '秘史 (Secret Histories)', desc: '知识、矛盾、多种可能性。世界曾是怎样，或可能是怎样。', motto: '世界曾是怎样，或可能是怎样。' }
+  'Secret Histories': { title: '秘史 (Secret Histories)', desc: '知识、矛盾、多种可能性。世界曾是怎样，或可能是怎样。', motto: '世界曾是怎样，或可能是怎样。' },
+  'Moon': { title: '月 (Moon)', desc: '秘密轻柔；夜柔更甚；大海低语。而倾听未必总是明智。', motto: '“行于夜者，被遗忘者。”' },
+  'Sky': { title: '穹 (Sky)', desc: '轻风，暴风，回响，歌咏；数学的复杂，飞行的原理。', motto: '“平衡，和谐与必然性。”' },
+  'Rose': { title: '引 (Rose)', desc: '“指引一切的罗盘玫瑰”。通向新视界的九重引导。', motto: '“探索？启迪？希望？”' },
+  'Scale': { title: '鳞 (Scale)', desc: '坚于表，固于里；难唤醒，更难抑。', motto: '“此为大地深处原始力量的残余。”' },
+  'Nectar': { title: '蜜 (Nectar)', desc: '世界脉络中的常绿珍宝；时节轮转的跃动脉搏。', motto: '“很久以前，一些人把该准则称作‘血’。”' }
 };
 
 const HourCard: React.FC<{ hour: any }> = ({ hour }) => {
@@ -232,7 +242,7 @@ const AspectProgress: React.FC<{ scores: AspectScore[] }> = ({ scores }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent pointer-events-none" />
         
         <AnimatePresence mode="wait">
-            {hoveredAspect ? (
+            {hoveredAspect && ASPECT_DESCRIPTIONS[hoveredAspect] ? (
                 <motion.div
                     key="content"
                     initial={{ opacity: 0, y: 10 }}
@@ -374,7 +384,17 @@ export const Results: React.FC<ResultsProps> = ({ scores, onRestart, quizMode, h
   }, {} as Record<Aspect, number>);
   
   const matchedHour = calculateHourMatch(scoresMap);
-  const characterImage = CHARACTER_IMAGES[primaryAspect];
+  
+  // Get character image with fallback to random if missing
+  let characterImage = CHARACTER_IMAGES[primaryAspect];
+  if (!characterImage) {
+    const availableImages = Object.values(CHARACTER_IMAGES);
+    if (availableImages.length > 0) {
+      // Use a deterministic random based on primaryAspect string to keep it consistent for the same result
+      const seed = primaryAspect.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+      characterImage = availableImages[seed % availableImages.length];
+    }
+  }
 
   const mainJudgment = calculateJudgment(scoresMap);
 

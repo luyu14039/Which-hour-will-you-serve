@@ -7,13 +7,17 @@ export type Aspect =
   | 'Grail'   // 杯
   | 'Moth'    // 蛾
   | 'Knock'   // 启
-  | 'Secret Histories'; // 秘史
+  | 'Secret Histories' // 秘史
+  | 'Moon'    // 月
+  | 'Sky'     // 穹
+  | 'Rose'    // 引
+  | 'Scale'   // 鳞
+  | 'Nectar'; // 蜜
 
 export interface Option {
   id: string;
   text: string;
-  aspect: Aspect;
-  value: number;
+  values: Partial<Record<Aspect, number>>;
   flavorText: string;
   nextQuestionId?: string;
   requirement?: {
@@ -39,8 +43,7 @@ export interface HistoryRecord {
   questionTitle: string;
   optionId: string;
   optionText: string;
-  aspect: Aspect;
-  value: number;
+  values: Partial<Record<Aspect, number>>;
   flavorText: string;
 }
 

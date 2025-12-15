@@ -26,7 +26,8 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete, onScoreUpdate
     return saved ? JSON.parse(saved) : {
       'Lantern': 0, 'Forge': 0, 'Edge': 0, 'Winter': 0,
       'Heart': 0, 'Grail': 0, 'Moth': 0, 'Knock': 0,
-      'Secret Histories': 0
+      'Secret Histories': 0,
+      'Moon': 0, 'Sky': 0, 'Rose': 0, 'Scale': 0, 'Nectar': 0
     };
   });
   const [history, setHistory] = useState<HistoryRecord[]>(() => {
@@ -70,8 +71,7 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete, onScoreUpdate
       questionTitle: currentQuestion!.title,
       optionId: option.id,
       optionText: option.text,
-      aspect: option.aspect,
-      value: option.value,
+      values: option.values,
       flavorText: option.flavorText
     };
     
@@ -79,7 +79,13 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete, onScoreUpdate
     setHistory(newHistory);
 
     // Update scores
-    const newScores = { ...scores, [option.aspect]: scores[option.aspect] + option.value };
+    const newScores = { ...scores };
+    Object.entries(option.values).forEach(([aspect, val]) => {
+        if (val) {
+            newScores[aspect as Aspect] = (newScores[aspect as Aspect] || 0) + val;
+        }
+    });
+
     setScores(newScores);
     if (onScoreUpdate) onScoreUpdate(newScores);
 
@@ -108,7 +114,12 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete, onScoreUpdate
       const lastAction = history[history.length - 1];
       
       // Revert score
-      const newScores = { ...scores, [lastAction.aspect]: scores[lastAction.aspect] - lastAction.value };
+      const newScores = { ...scores };
+      Object.entries(lastAction.values).forEach(([aspect, value]) => {
+        if (value) {
+          newScores[aspect as Aspect] = (newScores[aspect as Aspect] || 0) - value;
+        }
+      });
       setScores(newScores);
       
       // Revert history
@@ -300,7 +311,7 @@ export const Quiz: React.FC<QuizProps> = ({ questions, onComplete, onScoreUpdate
 
                       {showAspects && !isLocked && (
                         <span className="text-[10px] md:text-xs text-gold/50 font-decorative tracking-wider border border-gold/10 px-1.5 py-0.5 rounded bg-black/20">
-                          {option.aspect}
+                          {Object.keys(option.values).join(', ')}
                         </span>
                       )}
                     </div>

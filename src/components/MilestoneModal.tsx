@@ -39,7 +39,7 @@ export const MilestoneModal: React.FC<MilestoneModalProps> = ({ isOpen, onClose 
                 </div>
             </div>
 
-            <h3 className="text-2xl text-gold font-heading mb-2 tracking-wider">30,000 次的相遇</h3>
+            <h3 className="text-2xl text-gold font-heading mb-2 tracking-wider">35,000 次的相遇</h3>
             
             <div className="h-px w-16 bg-gold/30 mx-auto my-4" />
 
@@ -50,6 +50,17 @@ export const MilestoneModal: React.FC<MilestoneModalProps> = ({ isOpen, onClose 
                 <p className="indent-8">
                     感谢你们的停泊，让这片虚构的海域变得如此真实。每一次点击，都是一次无形的共鸣；每一次停留，都让这座无墙之屋更加坚固。
                 </p>
+                
+                <div className="bg-black/20 p-4 rounded border border-gold/10 my-4">
+                  <h4 className="text-gold font-bold mb-2 text-center">本次更新内容</h4>
+                  <ul className="list-disc pl-5 space-y-2 text-xs text-parchment/70">
+                    <li>新增了 Wiki 的快速跳转按钮和相性的详细解释。</li>
+                    <li>新增了对《司辰之书》中额外的五个相性的适配。</li>
+                    <li>对问题和结果的判别进行了调整和优化。</li>
+                    <li>因为算法更新，推荐大家重新测试，结果会更准确有趣。</li>
+                  </ul>
+                </div>
+
                 <p className="text-center text-gold/60 italic pt-2 pb-2 border-t border-b border-gold/10 my-4">
                     “门关已开，而我们皆是过客。愿你在无墙之屋中，寻得那把属于你的钥匙。”
                 </p>

@@ -4,14 +4,15 @@ import { Results } from './components/Results';
 import { SupportModal } from './components/SupportModal';
 import { MilestoneModal } from './components/MilestoneModal';
 import { HushHousePromo } from './components/HushHousePromo';
+import { StoryView } from './features/story/components/StoryView';
 import type { Aspect, AspectScore, HistoryRecord } from './types';
 import { getHighestAspect } from './utils/matching';
 import { useSound } from './contexts/SoundContext';
-import { Volume2, VolumeX, Sparkles, BrainCircuit } from 'lucide-react';
+import { Volume2, VolumeX, Sparkles, BrainCircuit, BookOpen } from 'lucide-react';
 import { questions as OCCULT_QUESTIONS } from './data/questions';
 import { REALITY_QUESTIONS } from './data/reality_questions';
 
-type QuizMode = 'menu' | 'occult' | 'reality';
+type QuizMode = 'menu' | 'occult' | 'reality' | 'story';
 
 function App() {
   const { playSound, isMuted, toggleMute } = useSound();
@@ -43,7 +44,7 @@ function App() {
     // Visit count logic
     const visitCount = parseInt(localStorage.getItem('app_visit_count') || '0');
     const hasShownSupport = localStorage.getItem('app_has_shown_support') === 'true';
-    const hasShownMilestone = localStorage.getItem('app_milestone_30k_shown') === 'true';
+    const hasShownMilestone = localStorage.getItem('app_milestone_35k_shown') === 'true';
     
     // Increment visit count on mount (once per session/refresh)
     const newCount = visitCount + 1;
@@ -73,7 +74,7 @@ function App() {
 
   const handleCloseMilestoneModal = () => {
     setShowMilestoneModal(false);
-    localStorage.setItem('app_milestone_30k_shown', 'true');
+    localStorage.setItem('app_milestone_35k_shown', 'true');
   };
 
   useEffect(() => {
@@ -106,7 +107,7 @@ function App() {
         console.log('Support modal reset. Refresh to see it.');
       },
       resetMilestone: () => {
-        localStorage.removeItem('app_milestone_30k_shown');
+        localStorage.removeItem('app_milestone_35k_shown');
         console.log('Milestone modal reset. Refresh to see it.');
       },
       showMilestone: () => setShowMilestoneModal(true),
@@ -126,6 +127,15 @@ function App() {
     playSound('ambient');
     setQuizMode(mode);
     setHasStarted(true);
+  };
+
+  const handleStoryClick = () => {
+    const password = prompt("请输入访问密钥 (Access Key):");
+    if (password === '429429') {
+      handleStart('story');
+    } else if (password !== null) {
+      alert("密钥错误 / Invalid Key");
+    }
   };
 
   const handleComplete = (scores: AspectScore[], history: HistoryRecord[]) => {
@@ -155,7 +165,7 @@ function App() {
     localStorage.removeItem('quiz_currentQuestionId');
     localStorage.removeItem('quiz_scores');
     localStorage.removeItem('quiz_history');
-    localStorage.removeItem('adventure_gameState');
+    localStorage.removeItem('story-storage'); // Fix: Clear the correct story storage key
     localStorage.removeItem('adventure_gameStarted');
   };
 
@@ -228,7 +238,7 @@ function App() {
         )}
         
         {!hasStarted ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl px-4">
             {/* Mode A: Occult */}
             <button 
                  className="card-frame p-8 flex flex-col items-center text-center transform transition-all duration-500 hover:scale-[1.02] group cursor-pointer bg-onyx/40 hover:bg-onyx/60"
@@ -264,10 +274,41 @@ function App() {
                     凝视倒影
                 </div>
             </button>
+
+            {/* Mode C: Story (New) */}
+            <button 
+                 className="card-frame p-8 flex flex-col items-center text-center transform transition-all duration-500 hover:scale-[1.02] group cursor-pointer bg-onyx/40 hover:bg-onyx/60 relative overflow-hidden"
+                 onClick={handleStoryClick}
+                 onMouseEnter={() => playSound('hover')}>
+                
+                {/* Labels */}
+                <div className="absolute top-3 right-3 flex flex-col items-end gap-1.5 z-10">
+                  <span className="px-2 py-0.5 bg-amber-900/60 text-amber-200 text-[10px] font-bold tracking-wider border border-amber-500/30 rounded backdrop-blur-sm">
+                    开发中
+                  </span>
+                  <span className="px-2 py-0.5 bg-stone-800/60 text-stone-400 text-[10px] tracking-wider border border-stone-600/30 rounded backdrop-blur-sm">
+                    50k 访问特典
+                  </span>
+                </div>
+
+                <div className="mb-6 text-gold/80 group-hover:text-gold transition-colors">
+                    <BookOpen size={48} strokeWidth={1} />
+                </div>
+                <h3 className="text-2xl text-gold font-heading mb-2">苍白卷宗</h3>
+                <p className="text-xs text-gold/40 font-decorative tracking-widest uppercase mb-4">The Pale Dossier</p>
+                <p className="text-parchment/80 text-sm leading-relaxed mb-6 flex-1">
+                    扮演防剿局探员，在1920年代的伦敦调查一桩涉及飞升的诡异案件。
+                </p>
+                <div className="w-full py-2 border border-gold/30 text-gold/60 text-sm font-heading tracking-widest uppercase group-hover:bg-gold group-hover:text-void transition-all duration-300">
+                    阅读档案
+                </div>
+            </button>
           </div>
         ) : (
           <>
-            {!isFinished ? (
+            {quizMode === 'story' ? (
+              <StoryView onExit={handleRestart} />
+            ) : !isFinished ? (
               <Quiz 
                 questions={quizMode === 'reality' ? REALITY_QUESTIONS : OCCULT_QUESTIONS}
                 onComplete={handleComplete} 

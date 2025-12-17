@@ -252,7 +252,7 @@ function App() {
                   40k 访客特典
                 </div>
                 <Moon size={20} className="group-hover:animate-pulse text-gold" />
-                <span className="font-heading tracking-[0.2em] text-base">今日运势 · DAILY FORTUNE</span>
+                <span className="font-heading tracking-[0.2em] text-base">今日司辰 · TODAY'S HOUR</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/5 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]" />
               </button>
             </div>

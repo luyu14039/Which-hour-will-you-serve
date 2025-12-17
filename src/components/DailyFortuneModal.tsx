@@ -57,15 +57,20 @@ export const DailyFortuneModal: React.FC<DailyFortuneModalProps> = ({ isOpen, on
     const savedResult = localStorage.getItem('app_daily_fortune_result');
 
     if (savedDate === today && savedResult) {
-      const result: FortuneResult = JSON.parse(savedResult);
-      const hour = HOURS_DATA.find(h => h.id === result.hourId);
-      const fortuneData = FORTUNES_DATA.find(f => f.hourId === result.hourId);
-      
-      if (hour && fortuneData) {
-        return {
-          hour,
-          motto: fortuneData.mottos[result.mottoIndex] || fortuneData.mottos[0]
-        };
+      try {
+        const result: FortuneResult = JSON.parse(savedResult);
+        const hour = HOURS_DATA.find(h => h.id === result.hourId);
+        const fortuneData = FORTUNES_DATA.find(f => f.hourId === result.hourId);
+        
+        if (hour && fortuneData) {
+          return {
+            hour,
+            motto: fortuneData.mottos[result.mottoIndex] || fortuneData.mottos[0]
+          };
+        }
+      } catch (e) {
+        console.error("Failed to parse saved fortune:", e);
+        localStorage.removeItem('app_daily_fortune_result');
       }
     }
 
@@ -127,7 +132,7 @@ export const DailyFortuneModal: React.FC<DailyFortuneModalProps> = ({ isOpen, on
                 </button>
 
                 <div className="text-center mb-8">
-                <h3 className="text-2xl text-gold font-heading tracking-widest mb-2">今日运势</h3>
+                <h3 className="text-2xl text-gold font-heading tracking-widest mb-2">今日司辰</h3>
                 <div className="inline-block px-2 py-0.5 bg-gold/10 border border-gold/20 rounded text-[10px] text-gold/60 mb-2 tracking-wider">
                     40k 访客特典
                 </div>

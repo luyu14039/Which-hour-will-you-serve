@@ -631,7 +631,7 @@ export const Results: React.FC<ResultsProps> = ({ scores, onRestart, quizMode, h
             className="flex items-center justify-center gap-2 px-8 py-3 bg-gold/10 border border-gold/40 text-gold hover:bg-gold/20 transition-all duration-300 font-heading tracking-widest uppercase text-sm w-full md:w-auto"
           >
             <Moon size={16} />
-            <span>今日运势</span>
+            <span>今日司辰</span>
           </button>
         )}
 

@@ -131,14 +131,6 @@ function App() {
     setHasStarted(true);
   };
 
-  const handleStoryClick = () => {
-    const password = prompt("请输入访问密钥 (Access Key):");
-    if (password === '429429') {
-      handleStart('story');
-    } else if (password !== null) {
-      alert("密钥错误 / Invalid Key");
-    }
-  };
 
   const handleComplete = (scores: AspectScore[], history: HistoryRecord[]) => {
     setFinalScores(scores);
@@ -295,15 +287,17 @@ function App() {
               </button>
 
               {/* Mode C: Story (New) */}
-              <button 
-                  className="card-frame p-8 flex flex-col items-center text-center transform transition-all duration-500 hover:scale-[1.02] group cursor-pointer bg-onyx/40 hover:bg-onyx/60 relative overflow-hidden"
-                  onClick={handleStoryClick}
+              <a 
+                  href="https://luyu14039.github.io/pale-notes/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="card-frame p-8 flex flex-col items-center text-center transform transition-all duration-500 hover:scale-[1.02] group cursor-pointer bg-onyx/40 hover:bg-onyx/60 relative overflow-hidden block"
                   onMouseEnter={() => playSound('hover')}>
                   
                   {/* Labels */}
                   <div className="absolute top-3 right-3 flex flex-col items-end gap-1.5 z-10">
                     <span className="px-2 py-0.5 bg-amber-900/60 text-amber-200 text-[10px] font-bold tracking-wider border border-amber-500/30 rounded backdrop-blur-sm">
-                      开发中
+                      更新中！
                     </span>
                     <span className="px-2 py-0.5 bg-stone-800/60 text-stone-400 text-[10px] tracking-wider border border-stone-600/30 rounded backdrop-blur-sm">
                       50k 访问特典
@@ -321,7 +315,7 @@ function App() {
                   <div className="w-full py-2 border border-gold/30 text-gold/60 text-sm font-heading tracking-widest uppercase group-hover:bg-gold group-hover:text-void transition-all duration-300">
                       阅读档案
                   </div>
-              </button>
+              </a>
             </div>
           </>
         ) : (

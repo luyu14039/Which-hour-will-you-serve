@@ -10,7 +10,9 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
 ![TailwindCSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8)
 
-**🎉 感谢 45,000+ 位访客的造访！愿辉光照亮你们的道路。**
+**🎉 感谢 80,000+ 位访客的造访！愿辉光照亮你们的道路。**
+
+**🎆 2026 新年快乐！祝大家元旦快乐！**
 
 **如果你喜欢这个项目，请给它一个 Star ⭐️！**
 

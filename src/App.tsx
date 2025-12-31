@@ -3,6 +3,7 @@ import { Quiz } from './components/Quiz';
 import { Results } from './components/Results';
 import { SupportModal } from './components/SupportModal';
 import { MilestoneModal } from './components/MilestoneModal';
+import { NewYearModal } from './components/NewYearModal';
 import { HushHousePromo } from './components/HushHousePromo';
 import { StoryView } from './features/story/components/StoryView';
 import type { Aspect, AspectScore, HistoryRecord } from './types';
@@ -41,19 +42,34 @@ function App() {
   });
   const [showSupportModal, setShowSupportModal] = useState(false);
   const [showMilestoneModal, setShowMilestoneModal] = useState(false);
+  const [showNewYearModal, setShowNewYearModal] = useState(false);
 
   useEffect(() => {
     // Visit count logic
     const visitCount = parseInt(localStorage.getItem('app_visit_count') || '0');
     const hasShownSupport = localStorage.getItem('app_has_shown_support') === 'true';
     const hasShownMilestone = localStorage.getItem('app_milestone_45k_shown') === 'true';
+    const hasShownNewYear = localStorage.getItem('app_newyear_2026_shown') === 'true';
     
     // Increment visit count on mount (once per session/refresh)
     const newCount = visitCount + 1;
     localStorage.setItem('app_visit_count', newCount.toString());
 
+    // Date check for New Year (2026.1.1 - 2026.1.7)
+    const now = new Date();
+    const newYearStart = new Date('2026-01-01T00:00:00');
+    const newYearEnd = new Date('2026-01-07T23:59:59');
+    const isNewYearPeriod = now >= newYearStart && now <= newYearEnd;
+
+    // New Year logic: Highest priority
+    if (isNewYearPeriod && !hasShownNewYear) {
+        const timer = setTimeout(() => {
+            setShowNewYearModal(true);
+        }, 1000);
+        return () => clearTimeout(timer);
+    }
     // Milestone logic: Show if not shown yet
-    if (!hasShownMilestone) {
+    else if (!hasShownMilestone) {
       const timer = setTimeout(() => {
         setShowMilestoneModal(true);
       }, 1500);
@@ -68,6 +84,17 @@ function App() {
         return () => clearTimeout(timer);
     }
   }, []);
+
+  const handleCloseNewYearModal = () => {
+    setShowNewYearModal(false);
+    localStorage.setItem('app_newyear_2026_shown', 'true');
+    
+    // Check if we need to show milestone after closing new year
+    const hasShownMilestone = localStorage.getItem('app_milestone_45k_shown') === 'true';
+    if (!hasShownMilestone) {
+        setTimeout(() => setShowMilestoneModal(true), 500);
+    }
+  };
 
   const handleCloseSupportModal = () => {
     setShowSupportModal(false);
@@ -109,11 +136,16 @@ function App() {
         console.log('Support modal reset. Refresh to see it.');
       },
       resetMilestone: () => {
-        localStorage.removeItem('app_milestone_35k_shown');
+        localStorage.removeItem('app_milestone_45k_shown');
         console.log('Milestone modal reset. Refresh to see it.');
       },
+      resetNewYear: () => {
+        localStorage.removeItem('app_newyear_2026_shown');
+        console.log('New Year modal reset. Refresh to see it.');
+      },
       showMilestone: () => setShowMilestoneModal(true),
-      showSupport: () => setShowSupportModal(true)
+      showSupport: () => setShowSupportModal(true),
+      showNewYear: () => setShowNewYearModal(true)
     };
   }, []);
 
@@ -382,6 +414,10 @@ function App() {
       <MilestoneModal 
         isOpen={showMilestoneModal} 
         onClose={handleCloseMilestoneModal} 
+      />
+      <NewYearModal
+        isOpen={showNewYearModal}
+        onClose={handleCloseNewYearModal}
       />
       <DailyFortuneModal
         isOpen={showFortuneModal}

@@ -5,6 +5,7 @@ import { SupportModal } from './components/SupportModal';
 import { MilestoneModal } from './components/MilestoneModal';
 import { NewYearModal } from './components/NewYearModal';
 import { HushHousePromo } from './components/HushHousePromo';
+import { TarotPromo } from './components/TarotPromo';
 import { StoryView } from './features/story/components/StoryView';
 import type { Aspect, AspectScore, HistoryRecord } from './types';
 import { getHighestAspect } from './utils/matching';
@@ -374,6 +375,7 @@ function App() {
         )}
 
         {!hasStarted && <HushHousePromo />}
+        {!hasStarted && <TarotPromo />}
 
         <footer className="mt-16 text-ash/40 text-xs font-decorative tracking-widest flex flex-col items-center gap-2">
           <p>VOL. I — THE WATCHMAN'S TREE</p>

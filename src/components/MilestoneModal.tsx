@@ -131,25 +131,61 @@ export const MilestoneModal: React.FC<MilestoneModalProps> = ({ isOpen, onClose 
                     最近我的事儿也结束一些了，我将继续投入到这个以及更多新的二创项目的开发中。如果您感兴趣，欢迎在小黑盒或小红书关注我，我会第一时间在那里发布更新动态。
                 </p>
                 <p>
-                    如果您对《密教模拟器》与《司辰之书》的世界观感兴趣，或许也会喜欢我的另一个二创项目：
+                    如果您对《密教模拟器》与《司辰之书》的世界观感兴趣，或许也会喜欢我的其他二创项目：
                 </p>
-                <div className="bg-black/30 p-4 border border-gold/10 rounded-sm mt-4">
-                    <h4 className="text-gold font-bold mb-1 flex items-center gap-2">
-                        Hush House / 噤声书屋
-                    </h4>
-                    <p className="text-xs text-parchment/60 mb-3">
-                        一个基于 LLM 数据提炼的《密教模拟器》与《司辰之书》沉浸式可视化阅读器与知识图谱构建项目。
-                    </p>
-                    <a 
-                        href="https://github.com/luyu14039/Hush-House" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 w-full py-2 border border-gold/30 bg-gold/5 text-gold hover:bg-gold/10 hover:border-gold transition-all duration-300 font-heading tracking-widest uppercase text-xs group"
-                    >
-                        <Github size={14} />
-                        查看项目
-                        <ExternalLink size={14} className="ml-1 opacity-50" />
-                    </a>
+                
+                <div className="space-y-4 mt-4">
+                    {/* Hush House */}
+                    <div className="bg-black/30 p-4 border border-gold/10 rounded-sm">
+                        <h4 className="text-gold font-bold mb-1 flex items-center gap-2">
+                            Hush House / 噤声书屋
+                        </h4>
+                        <p className="text-xs text-parchment/60 mb-3">
+                            一个基于 LLM 数据提炼的《密教模拟器》与《司辰之书》沉浸式可视化阅读器与知识图谱构建项目。
+                        </p>
+                        <a 
+                            href="https://github.com/luyu14039/Hush-House" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center gap-2 w-full py-2 border border-gold/30 bg-gold/5 text-gold hover:bg-gold/10 hover:border-gold transition-all duration-300 font-heading tracking-widest uppercase text-xs group"
+                        >
+                            <Github size={14} />
+                            查看项目
+                            <ExternalLink size={14} className="ml-1 opacity-50" />
+                        </a>
+                    </div>
+
+                    {/* Tarot But Hours */}
+                    <div className="bg-black/30 p-4 border border-gold/10 rounded-sm">
+                        <h4 className="text-gold font-bold mb-1 flex items-center gap-2">
+                            Tarot But Hours / 司辰塔罗
+                        </h4>
+                        <p className="text-xs text-parchment/60 mb-3">
+                            一个基于《密教模拟器》与《司辰之书》世界观的塔罗牌占卜工具，将司辰与大阿卡纳牌一一对应。
+                        </p>
+                        <div className="flex gap-2">
+                            <a 
+                                href="https://luyu14039.github.io/tarot-but-hours/" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="flex-1 flex items-center justify-center gap-2 py-2 border border-gold/30 bg-gold/5 text-gold hover:bg-gold/10 hover:border-gold transition-all duration-300 font-heading tracking-widest uppercase text-xs group"
+                            >
+                                <Sparkles size={14} />
+                                在线占卜
+                                <ExternalLink size={14} className="ml-1 opacity-50" />
+                            </a>
+                            <a 
+                                href="https://github.com/luyu14039/tarot-but-hours" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="flex-1 flex items-center justify-center gap-2 py-2 border border-gold/30 bg-gold/5 text-gold hover:bg-gold/10 hover:border-gold transition-all duration-300 font-heading tracking-widest uppercase text-xs group"
+                            >
+                                <Github size={14} />
+                                查看项目
+                                <ExternalLink size={14} className="ml-1 opacity-50" />
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 

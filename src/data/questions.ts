@@ -128,7 +128,7 @@ export const questions: Question[] = [
     options: [
       { id: 'A', text: '请她喝一杯，探听消息', values: { 'Grail': 2, 'Nectar': 1 }, flavorText: '欲望是通用的货币，而你挥金如土。她的嘴唇像伤口一样红，散发着甜腻的香气。', nextQuestionId: 'q3_bookstore' },
       { id: 'B', text: '展示家族徽章，要求解释', values: { 'Edge': 2, 'Sky': 1 }, flavorText: '权力不容置疑，你习惯了发号施令。她微微低头，但这可能只是伪装的顺从。你感到一种居高临下的快感。', nextQuestionId: 'q3_bookstore' },
-      { id: 'C', text: '讲一个荒诞的笑话', values: { 'Moth': 2, 'Moon': 1 }, flavorText: '你用混乱打破了僵局，她被你的疯狂逗乐了。笑声像剪刀一样锋利，在月光下回荡。', nextQuestionId: 'q3_bookstore' },
+      { id: 'C', text: '讲一个荒诞的笑话', values: { 'Moth': 2, 'Knock': 1 }, flavorText: '你用混乱打破了僵局，她被你的疯狂逗乐了。笑声不仅是防御，更是撬开防线的工具。', nextQuestionId: 'q3_bookstore' },
       { id: 'D', text: '真诚地赞美她的面纱', values: { 'Heart': 2, 'Rose': 1 }, flavorText: '你的魅力源自真心，这比金钱更难得。她似乎在面纱后微笑，指引你走向更深处的迷宫。', nextQuestionId: 'q3_bookstore' }
     ]
   },
@@ -249,8 +249,8 @@ export const questions: Question[] = [
       { 
         id: 'C', 
         text: '在茶歇时播撒不安的种子', 
-        values: { 'Moth': 3, 'Moon': 1 }, 
-        flavorText: '混乱是阶梯，你看着同事们在恐慌中起舞。谎言比真相更甜美，如月光般虚幻。', 
+        values: { 'Moth': 3, 'Knock': 1 }, 
+        flavorText: '混乱是阶梯，你寻找着制度的裂缝。谎言比真相更甜美，能撬开人们封闭的心智。', 
         nextQuestionId: 'q5_ally' 
       },
       { 
@@ -277,8 +277,8 @@ export const questions: Question[] = [
       { 
         id: 'G', 
         text: '寻找办公室里的隐藏空间', 
-        values: { 'Knock': 3, 'Winter': 1 }, 
-        flavorText: '每栋建筑都有秘密。你敲击墙壁，寻找空洞的回音，寻找通往寂静之处的门。', 
+        values: { 'Winter': 3, 'Moon': 1 }, 
+        flavorText: '喧嚣之外总有寂静。你寻找那些被光遗忘的角落，在那里，月光和尘埃是唯一的伴侣。', 
         nextQuestionId: 'q5_ally' 
       }
     ]
@@ -369,16 +369,16 @@ export const questions: Question[] = [
       },
       { 
         id: 'D', 
-        text: '对终结与律法的向往', 
-        values: { 'Winter': 3, 'Sky': 1 }, 
-        flavorText: '一切终将结束。我只是想看清结局的样子，并确保它符合某种崇高的秩序。', 
+        text: '对终结与静谧的向往', 
+        values: { 'Winter': 3, 'Moon': 1 }, 
+        flavorText: '一切终将结束。我只是想看清结局的样子，那是镜中倒影般的永恒寂静。', 
         nextQuestionId: 'q5c_sacrifice' 
       },
       { 
         id: 'E', 
-        text: '对蜕变与虚幻的冲动', 
-        values: { 'Moth': 3, 'Moon': 1 }, 
-        flavorText: '我不愿再做人类。我要脱去这层皮，飞向更高处，在月光下成为另一个存在。', 
+        text: '对蜕变与开启的冲动', 
+        values: { 'Moth': 3, 'Knock': 1 }, 
+        flavorText: '我不愿再做人类。我要脱去这层皮，敲开肉体的牢笼，飞向未知的更高处。', 
         nextQuestionId: 'q5c_sacrifice' 
       },
       { 
@@ -541,9 +541,9 @@ export const questions: Question[] = [
       },
       { 
         id: 'D', 
-        text: '“寂静先于蜕变。”', 
-        values: { 'Winter': 2, 'Moth': 2 }, 
-        flavorText: '旧的躯壳必须死去，新的形态才能诞生。我们在沉默中等待疯狂的进化，如蛹化蝶。', 
+        text: '“寂静是镜中的倒影。”', 
+        values: { 'Winter': 2, 'Moon': 2 }, 
+        flavorText: '我们在月光下守望终结。世界是一面镜子，我们注视着它破碎前的宁静背面。', 
         nextQuestionId: 'q8_exploration' 
       },
       { 
@@ -555,16 +555,16 @@ export const questions: Question[] = [
       },
       { 
         id: 'F', 
-        text: '“坚石亦向钥匙屈服。”', 
-        values: { 'Knock': 2, 'Scale': 2 }, 
-        flavorText: '没有什么是封闭的，即使是最坚硬的现实。我们寻找裂缝，打开通往深处的门，唤醒沉睡的古老之物。', 
+        text: '“混沌是通往飞升的门扉。”', 
+        values: { 'Moth': 2, 'Knock': 2 }, 
+        flavorText: '为了这一刻，我们时刻准备着蜕变。敲击世界的伤口，直到它裂开，露出里面的光。', 
         nextQuestionId: 'q8_exploration' 
       },
       { 
         id: 'G', 
-        text: '“我们在苍白之光中绽放。”', 
-        values: { 'Moon': 2, 'Nectar': 2 }, 
-        flavorText: '真实的自我只在阴影中显现。我们像夜行植物一样，汲取着秘密的养分，在月光下疯狂生长。', 
+        text: '“我们是荒原上的棘刺与古岩。”', 
+        values: { 'Scale': 2, 'Nectar': 2 }, 
+        flavorText: '我们在恶劣中生存，生命与坚韧共存。像岩石一样古老，像藤蔓一样顽强。', 
         nextQuestionId: 'q8_exploration' 
       }
     ]
